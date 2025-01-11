@@ -1,0 +1,39 @@
+<input type="file" (change)="uploadProcessCSV()" #inputElemnt />
+
+@if (employeeList.length>0) {
+    <table>
+        <tr>
+            <th>Sl no.</th>
+            @for (item of headers; track $index) {
+            @if (!['ReportingPersonRole' ,'ReportingPersonName', 'actualReportingRole'].includes(item)) {
+            <th>
+                {{item}}
+            </th>
+            }
+            }
+        </tr>
+        @for (item of employeeList; track $index) {
+        <tr>
+            <td>{{$index+1}}</td>
+            @for (header of headers; track $index) {
+            @if (!['ReportingPersonRole','ReportingPersonName', 'actualReportingRole'].includes(header)) {
+            <td [ngClass]="header==='status' ? item[header]===true?'Passed': 'Failed':'Normal'">
+                {{header!='status'?item[header]:item[header]===true?'Passed': 'Failed'}}
+            </td>
+            }
+            }
+        </tr>
+        }
+    </table>
+    
+    <h2>Error Logs</h2>
+    @for (header of errorHeaders; track $index) {
+    <h4>{{errorLogs[header].title}}</h4>
+    <ul>
+        @for (error of errorLogs[header].errors; track $index) {
+    
+        <li>{{error}}</li>
+        }
+    </ul>
+    }
+}

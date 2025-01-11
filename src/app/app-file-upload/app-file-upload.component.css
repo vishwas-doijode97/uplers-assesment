@@ -1,0 +1,17 @@
+th,td {
+    border: 1px black solid;
+}
+.Passed {
+    color: green;
+    font-weight: bold;
+}
+.Failed {
+    color: red;
+    font-weight: bold;
+
+}
+.Normal {
+    color: black;
+    font-weight: bold;
+
+}
