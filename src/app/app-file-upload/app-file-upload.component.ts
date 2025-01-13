@@ -64,9 +64,9 @@ export class AppFileUploadComponent {
   }
 
   detectCycle(data: any) {
-    const graph: any = {}; // To store the graph representation
-    const visited = new Set(); // To track visited nodes
-    const stack = new Set(); // To track the current stack during DFS
+    const graph: any = {}; 
+    const visited = new Set(); 
+    const stack = new Set(); 
 
     const { Email, ReportsTo } = { ...data };
     graph[Email] = ReportsTo;
@@ -86,7 +86,7 @@ export class AppFileUploadComponent {
     const hasCycle: any = this.dfs(graph[node], visited, stack, graph);
     stack.delete(node);
 
-    visited.add(node);
+    visited.add(node);    
     return hasCycle;
   }
 
